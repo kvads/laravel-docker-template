@@ -1,0 +1,14 @@
+networks:
+  laravel_network:
+    internal: true
+#TODO Nginx proxy
+services:
+  fpm_service:
+    container_name: laravel_fpm
+    build:
+      context: .
+      dockerfile: docker/php_fpm/Dockerfile
+    user: www-data
+    restart: always
+    networks:
+      - laravel_network
